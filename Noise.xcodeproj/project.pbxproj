@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1F474DD81E9081E7006C5BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DD71E9081E7006C5BC2 /* AppDelegate.swift */; };
-		1F474DDA1E9081E7006C5BC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DD91E9081E7006C5BC2 /* ViewController.swift */; };
 		1F474DDC1E9081E7006C5BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F474DDB1E9081E7006C5BC2 /* Assets.xcassets */; };
-		1F474DDF1E9081E7006C5BC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F474DDD1E9081E7006C5BC2 /* Main.storyboard */; };
 		1F474DEA1E9081E7006C5BC2 /* NoiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DE91E9081E7006C5BC2 /* NoiseTests.swift */; };
 		1F474DF51E9081E7006C5BC2 /* NoiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DF41E9081E7006C5BC2 /* NoiseUITests.swift */; };
-		1F474E031E908639006C5BC2 /* NoiseFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; };
-		1F474E041E908639006C5BC2 /* NoiseFetcher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1F474E081E90868A006C5BC2 /* NoiseFetcher.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */; };
-		1FDE46371E9097D6005C48A0 /* NoiseFetcher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; };
+		1F4D52101E90AB5E0042251C /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D520F1E90AB5E0042251C /* Fetcher.swift */; };
+		1F4D52111E90AB5E0042251C /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D520F1E90AB5E0042251C /* Fetcher.swift */; };
+		1F4D52121E90AB5E0042251C /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D520F1E90AB5E0042251C /* Fetcher.swift */; };
+		1FDE463A1E9098AF005C48A0 /* NoiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE46381E9098AF005C48A0 /* NoiseViewController.swift */; };
+		1FDE463B1E9098AF005C48A0 /* NoiseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE46391E9098AF005C48A0 /* NoiseViewController.xib */; };
+		1FDE463D1E909D3B005C48A0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE463C1E909D3B005C48A0 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,37 +36,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1F474E051E908639006C5BC2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1F474E041E908639006C5BC2 /* NoiseFetcher.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F474E061E908669006C5BC2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				1F474E081E90868A006C5BC2 /* NoiseFetcher.framework.dSYM in CopyFiles */,
-				1FDE46371E9097D6005C48A0 /* NoiseFetcher.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		1F474DD41E9081E7006C5BC2 /* Noise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F474DD71E9081E7006C5BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F474DD91E9081E7006C5BC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F474DDB1E9081E7006C5BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F474DDE1E9081E7006C5BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F474DE01E9081E7006C5BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F474DE51E9081E7006C5BC2 /* NoiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F474DE91E9081E7006C5BC2 /* NoiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseTests.swift; sourceTree = "<group>"; };
@@ -74,8 +47,10 @@
 		1F474DF01E9081E7006C5BC2 /* NoiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F474DF41E9081E7006C5BC2 /* NoiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseUITests.swift; sourceTree = "<group>"; };
 		1F474DF61E9081E7006C5BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F474E021E908639006C5BC2 /* NoiseFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NoiseFetcher.framework; path = Carthage/Build/Mac/NoiseFetcher.framework; sourceTree = "<group>"; };
-		1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = NoiseFetcher.framework.dSYM; path = Carthage/Build/Mac/NoiseFetcher.framework.dSYM; sourceTree = "<group>"; };
+		1F4D520F1E90AB5E0042251C /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		1FDE46381E9098AF005C48A0 /* NoiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseViewController.swift; sourceTree = "<group>"; };
+		1FDE46391E9098AF005C48A0 /* NoiseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoiseViewController.xib; sourceTree = "<group>"; };
+		1FDE463C1E909D3B005C48A0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F474E031E908639006C5BC2 /* NoiseFetcher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +81,6 @@
 		1F474DCB1E9081E7006C5BC2 = {
 			isa = PBXGroup;
 			children = (
-				1FDE46361E9097A8005C48A0 /* Depencies */,
 				1F474DD61E9081E7006C5BC2 /* Noise */,
 				1F474DE81E9081E7006C5BC2 /* NoiseTests */,
 				1F474DF31E9081E7006C5BC2 /* NoiseUITests */,
@@ -129,10 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				1F474DD71E9081E7006C5BC2 /* AppDelegate.swift */,
-				1F474DD91E9081E7006C5BC2 /* ViewController.swift */,
 				1F474DDB1E9081E7006C5BC2 /* Assets.xcassets */,
-				1F474DDD1E9081E7006C5BC2 /* Main.storyboard */,
+				1FDE46381E9098AF005C48A0 /* NoiseViewController.swift */,
+				1FDE46391E9098AF005C48A0 /* NoiseViewController.xib */,
 				1F474DE01E9081E7006C5BC2 /* Info.plist */,
+				1FDE463C1E909D3B005C48A0 /* MainMenu.xib */,
+				1F4D520F1E90AB5E0042251C /* Fetcher.swift */,
 			);
 			path = Noise;
 			sourceTree = "<group>";
@@ -155,15 +130,6 @@
 			path = NoiseUITests;
 			sourceTree = "<group>";
 		};
-		1FDE46361E9097A8005C48A0 /* Depencies */ = {
-			isa = PBXGroup;
-			children = (
-				1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */,
-				1F474E021E908639006C5BC2 /* NoiseFetcher.framework */,
-			);
-			name = Depencies;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,8 +140,6 @@
 				1F474DD01E9081E7006C5BC2 /* Sources */,
 				1F474DD11E9081E7006C5BC2 /* Frameworks */,
 				1F474DD21E9081E7006C5BC2 /* Resources */,
-				1F474E051E908639006C5BC2 /* Embed Frameworks */,
-				1F474E061E908669006C5BC2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -276,8 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FDE463B1E9098AF005C48A0 /* NoiseViewController.xib in Resources */,
 				1F474DDC1E9081E7006C5BC2 /* Assets.xcassets in Resources */,
-				1F474DDF1E9081E7006C5BC2 /* Main.storyboard in Resources */,
+				1FDE463D1E909D3B005C48A0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F474DDA1E9081E7006C5BC2 /* ViewController.swift in Sources */,
+				1FDE463A1E9098AF005C48A0 /* NoiseViewController.swift in Sources */,
 				1F474DD81E9081E7006C5BC2 /* AppDelegate.swift in Sources */,
+				1F4D52101E90AB5E0042251C /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F474DEA1E9081E7006C5BC2 /* NoiseTests.swift in Sources */,
+				1F4D52111E90AB5E0042251C /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F474DF51E9081E7006C5BC2 /* NoiseUITests.swift in Sources */,
+				1F4D52121E90AB5E0042251C /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,17 +305,6 @@
 			targetProxy = 1F474DF11E9081E7006C5BC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1F474DDD1E9081E7006C5BC2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F474DDE1E9081E7006C5BC2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F474DF71E9081E7006C5BC2 /* Debug */ = {

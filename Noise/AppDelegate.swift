@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Noise
+//  NoiseApp
 //
 //  Created by Jeff Larson on 4/1/17.
 //  Copyright © 2017 Jeff Larson. All rights reserved.
@@ -10,11 +10,27 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let popover = NSPopover()
+    let status = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
 
-
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        if let button = status.button {
+            button.image = NSImage(named: "noise")
+            button.action = #selector(toggle)
+        }
+
+        popover.contentViewController = NoiseViewController(nibName: "NoiseViewController.xib", bundle: nil)
+    }
+    
+    func toggle(sender: AnyObject?) {
+        if popover.isShown {
+            popover.performClose(sender)
+        } else {
+            if let button = status.button {
+                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            }
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

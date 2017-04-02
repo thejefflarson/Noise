@@ -9,28 +9,27 @@
 import XCTest
 @testable import Noise
 
-class NoiseTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class NoiseTests: XCTestCase {    
+    func testLoad() {
+        let expect = self.expectation(description: "Waiting for request.")
+        let loader = Loader()
+        loader.load("https://www.google.com") {_ in
+            expect.fulfill()
         }
+        self.waitForExpectations(timeout: 5.0, handler: nil)
     }
     
+    func testNoise() {
+        let noise = Fetcher(["https://www.google.com", "https://www.apple.com"], withDelay: 1)
+        noise.run()
+        let expect = self.expectation(description: "Waiting for requests.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            noise.stop()
+            XCTAssert(noise.bytes > 0)
+            XCTAssert(noise.hosts.count > 0)
+            XCTAssert(noise.visited > 0)
+            expect.fulfill()
+        })
+        self.waitForExpectations(timeout: 6.0, handler: nil)
+    }
 }
