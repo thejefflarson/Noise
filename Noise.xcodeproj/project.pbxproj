@@ -16,6 +16,7 @@
 		1F474E031E908639006C5BC2 /* NoiseFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; };
 		1F474E041E908639006C5BC2 /* NoiseFetcher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F474E081E90868A006C5BC2 /* NoiseFetcher.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */; };
+		1FDE46371E9097D6005C48A0 /* NoiseFetcher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F474E021E908639006C5BC2 /* NoiseFetcher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				1F474E081E90868A006C5BC2 /* NoiseFetcher.framework.dSYM in CopyFiles */,
+				1FDE46371E9097D6005C48A0 /* NoiseFetcher.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +107,7 @@
 		1F474DCB1E9081E7006C5BC2 = {
 			isa = PBXGroup;
 			children = (
-				1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */,
-				1F474E021E908639006C5BC2 /* NoiseFetcher.framework */,
+				1FDE46361E9097A8005C48A0 /* Depencies */,
 				1F474DD61E9081E7006C5BC2 /* Noise */,
 				1F474DE81E9081E7006C5BC2 /* NoiseTests */,
 				1F474DF31E9081E7006C5BC2 /* NoiseUITests */,
@@ -152,6 +153,15 @@
 				1F474DF61E9081E7006C5BC2 /* Info.plist */,
 			);
 			path = NoiseUITests;
+			sourceTree = "<group>";
+		};
+		1FDE46361E9097A8005C48A0 /* Depencies */ = {
+			isa = PBXGroup;
+			children = (
+				1F474E071E90868A006C5BC2 /* NoiseFetcher.framework.dSYM */,
+				1F474E021E908639006C5BC2 /* NoiseFetcher.framework */,
+			);
+			name = Depencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +557,7 @@
 				1F474DFB1E9081E7006C5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F474DFC1E9081E7006C5BC2 /* Build configuration list for PBXNativeTarget "NoiseTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +566,7 @@
 				1F474DFE1E9081E7006C5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F474DFF1E9081E7006C5BC2 /* Build configuration list for PBXNativeTarget "NoiseUITests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +575,7 @@
 				1F474E011E9081E7006C5BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
