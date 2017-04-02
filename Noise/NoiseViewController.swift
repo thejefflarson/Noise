@@ -7,13 +7,26 @@
 //
 import NoiseFetcher
 import Cocoa
+import WebKit
 
 class NoiseViewController: NSViewController {
-    let noise = Fetcher(["https://www.apple.com"], withDelay: 5)
-
+    @IBOutlet var quit: NSTextField!
+    @IBOutlet var webViewContainer: NSView!
+    var noise: Fetcher!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        noise = Fetcher(["https://www.apple.com", "https://www.google.com"], withDelay: 60)
+        webViewContainer.addSubview(noise.view)
+        noise.view.leadingAnchor.constraint(equalTo: webViewContainer.leadingAnchor).isActive = true
+        noise.view.trailingAnchor.constraint(equalTo: webViewContainer.trailingAnchor).isActive = true
+        noise.view.topAnchor.constraint(equalTo: webViewContainer.topAnchor).isActive = true
+        noise.view.bottomAnchor.constraint(equalTo: webViewContainer.bottomAnchor).isActive = true
+        noise.run()
     }
     
+    @IBAction func quit(_ sender: NSButton) {
+        noise.stop()
+        NSApplication.shared().terminate(sender)
+    }
 }

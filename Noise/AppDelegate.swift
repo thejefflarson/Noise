@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(toggle)
         }
 
-        popover.contentViewController = NoiseViewController(nibName: "NoiseViewController.xib", bundle: nil)
+        popover.contentViewController = NoiseViewController(nibName: "NoiseViewController", bundle: nil)
     }
     
     func toggle(sender: AnyObject?) {

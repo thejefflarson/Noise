@@ -1,19 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NoiseVewController" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="NoiseViewController" customModule="Noise" customModuleProvider="target">
             <connections>
+                <outlet property="quit" destination="4fi-eK-jyx" id="TCk-Zz-khX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="webViewContainer" destination="pAQ-XH-IBL" id="pP6-4G-FJv"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="410" height="413"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kC2-gp-1ni">
+                    <rect key="frame" x="0.0" y="413" width="410" height="0.0"/>
+                </stackView>
+                <box identifier="Box" autoresizesSubviews="NO" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TUT-Y0-ga4">
+                    <rect key="frame" x="-3" y="377" width="416" height="38"/>
+                    <view key="contentView" id="BZk-ec-mft">
+                        <rect key="frame" x="1" y="1" width="414" height="36"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="26j-gY-vp4">
+                                <rect key="frame" x="344" y="1" width="66" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rLr-ha-2HY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quit:" target="-2" id="G8S-VN-5Ih"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4fi-eK-jyx">
+                                <rect key="frame" x="8" y="9" width="37" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="SGd-1x-dNE">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="26j-gY-vp4" firstAttribute="top" secondItem="BZk-ec-mft" secondAttribute="top" constant="7" id="4hI-TW-T6H"/>
+                            <constraint firstItem="4fi-eK-jyx" firstAttribute="leading" secondItem="BZk-ec-mft" secondAttribute="leading" constant="10" id="cL9-Cd-h6g"/>
+                            <constraint firstItem="4fi-eK-jyx" firstAttribute="top" secondItem="BZk-ec-mft" secondAttribute="top" constant="10" id="cNs-lv-8cO"/>
+                            <constraint firstAttribute="trailing" secondItem="26j-gY-vp4" secondAttribute="trailing" constant="10" id="qw6-nY-2gk"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" secondItem="4fi-eK-jyx" secondAttribute="height" constant="15" id="yK8-6o-pht"/>
+                    </constraints>
+                </box>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="pAQ-XH-IBL">
+                    <rect key="frame" x="0.0" y="0.0" width="410" height="378"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="kC2-gp-1ni" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="6Au-ss-bSZ"/>
+                <constraint firstAttribute="trailing" secondItem="TUT-Y0-ga4" secondAttribute="trailing" id="9g5-3Y-zlU"/>
+                <constraint firstAttribute="trailing" secondItem="pAQ-XH-IBL" secondAttribute="trailing" id="9th-gK-ut5"/>
+                <constraint firstAttribute="bottom" secondItem="pAQ-XH-IBL" secondAttribute="bottom" id="ID1-yl-vOA"/>
+                <constraint firstItem="kC2-gp-1ni" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Tyq-ZX-Xpg"/>
+                <constraint firstItem="pAQ-XH-IBL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Y8q-z1-Eu2"/>
+                <constraint firstItem="TUT-Y0-ga4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bVn-on-TIJ"/>
+                <constraint firstItem="pAQ-XH-IBL" firstAttribute="top" secondItem="BZk-ec-mft" secondAttribute="bottom" id="c8Z-hf-edw"/>
+                <constraint firstAttribute="trailing" secondItem="kC2-gp-1ni" secondAttribute="trailing" id="lmZ-lw-goJ"/>
+                <constraint firstItem="TUT-Y0-ga4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="shI-3R-yex"/>
+            </constraints>
+            <point key="canvasLocation" x="15" y="277.5"/>
         </customView>
     </objects>
 </document>
