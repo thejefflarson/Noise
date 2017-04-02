@@ -38,7 +38,7 @@ class NoiseViewController: NSViewController {
     
     private func update() {
         let bytes = ByteCountFormatter.string(fromByteCount: Int64(noise.bytes), countStyle: ByteCountFormatter.CountStyle.file)
-        let s = noise.count > 1 ? "s" : ""
+        let s = noise.count == 1 ? "s" : ""
         label.stringValue = "Loaded \(noise.count) site\(s): \(bytes)"
     }
     
