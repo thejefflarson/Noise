@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     let status = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-
+    var noise: Fetcher!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = status.button {
@@ -20,7 +20,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(toggle)
         }
 
-        popover.contentViewController = NoiseViewController(nibName: "NoiseViewController", bundle: nil)
+        let path = Bundle.main.path(forResource: "sites", ofType: "txt")!
+        let urls = try! String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        self.noise = Fetcher(urls.components(separatedBy: "\n"), withDelay: 10)
+        let controller = NoiseViewController(nibName: "NoiseViewController", bundle: nil)!
+        controller.noise = noise
+        popover.contentViewController = controller
+        noise.run()
     }
     
     func toggle(sender: AnyObject?) {
@@ -34,9 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        noise.stop()
     }
-
-
 }
 

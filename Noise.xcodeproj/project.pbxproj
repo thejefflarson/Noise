@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F38362D1E90F59400BC30F8 /* sites.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F38362C1E90F59400BC30F8 /* sites.txt */; };
 		1F474DD81E9081E7006C5BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DD71E9081E7006C5BC2 /* AppDelegate.swift */; };
 		1F474DDC1E9081E7006C5BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F474DDB1E9081E7006C5BC2 /* Assets.xcassets */; };
 		1F474DEA1E9081E7006C5BC2 /* NoiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F474DE91E9081E7006C5BC2 /* NoiseTests.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F38362C1E90F59400BC30F8 /* sites.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sites.txt; path = Noise/sites.txt; sourceTree = "<group>"; };
 		1F474DD41E9081E7006C5BC2 /* Noise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F474DD71E9081E7006C5BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F474DDB1E9081E7006C5BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,9 +80,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F38362E1E90F59E00BC30F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F38362C1E90F59400BC30F8 /* sites.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		1F474DCB1E9081E7006C5BC2 = {
 			isa = PBXGroup;
 			children = (
+				1F38362E1E90F59E00BC30F8 /* Resources */,
 				1F474DD61E9081E7006C5BC2 /* Noise */,
 				1F474DE81E9081E7006C5BC2 /* NoiseTests */,
 				1F474DF31E9081E7006C5BC2 /* NoiseUITests */,
@@ -243,6 +254,7 @@
 				1FDE463B1E9098AF005C48A0 /* NoiseViewController.xib in Resources */,
 				1F474DDC1E9081E7006C5BC2 /* Assets.xcassets in Resources */,
 				1FDE463D1E909D3B005C48A0 /* MainMenu.xib in Resources */,
+				1F38362D1E90F59400BC30F8 /* sites.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

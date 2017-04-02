@@ -10,23 +10,39 @@ import Cocoa
 import WebKit
 
 class NoiseViewController: NSViewController {
-    @IBOutlet var quit: NSTextField!
     @IBOutlet var webViewContainer: NSView!
+    @IBOutlet var label: NSTextField!
     var noise: Fetcher!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        noise = Fetcher(["https://www.apple.com", "https://www.google.com"], withDelay: 60)
+        noise.addObserver(self, forKeyPath: #keyPath(Fetcher.bytes), options: .new, context: nil)
         webViewContainer.addSubview(noise.view)
+        update()
         noise.view.leadingAnchor.constraint(equalTo: webViewContainer.leadingAnchor).isActive = true
         noise.view.trailingAnchor.constraint(equalTo: webViewContainer.trailingAnchor).isActive = true
         noise.view.topAnchor.constraint(equalTo: webViewContainer.topAnchor).isActive = true
         noise.view.bottomAnchor.constraint(equalTo: webViewContainer.bottomAnchor).isActive = true
-        noise.run()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        if keyPath == #keyPath(Fetcher.bytes) {
+            update()
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
+    private func update() {
+        let bytes = ByteCountFormatter.string(fromByteCount: Int64(noise.bytes), countStyle: ByteCountFormatter.CountStyle.file)
+        let s = noise.count > 1 ? "s" : ""
+        label.stringValue = "Loaded \(noise.count) site\(s): \(bytes)"
     }
     
     @IBAction func quit(_ sender: NSButton) {
-        noise.stop()
         NSApplication.shared().terminate(sender)
     }
 }

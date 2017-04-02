@@ -9,7 +9,7 @@
 import Foundation
 import WebKit
 
-class Loader: NSObject, WKNavigationDelegate {
+private class Loader: NSObject, WKNavigationDelegate {
     private var done: (UInt64) -> ()
     var view: WKWebView
     override init() {
@@ -41,43 +41,38 @@ class Loader: NSObject, WKNavigationDelegate {
             }
         }
     }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        self.done(0)
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        self.done(0)
+    }
 }
 
 class Fetcher : NSObject {
     private var urls: [String]
     private var loader: Loader
-    private var index: Int
-    private var running: Bool
-    private var delay: UInt32
-    private var stats: Stats
+    private var running: Bool = false
+    var delay: UInt32
+    var count: UInt64 = 0
+    var last: UInt64 = 0
+    dynamic var bytes: UInt64 = 0
+    
     init(_ urls: [String], withDelay delay: UInt32) {
         self.urls = urls
-        self.index = 0
         self.loader = Loader()
-        self.running = false
-        self.stats = Stats()
         self.delay = delay
     }
     
     func run() {
         self.running = true
-        loader.load(urls[0], next)
+        go()
     }
     
     func stop() {
         self.running = false
-    }
-    
-    var bytes: UInt64 {
-        return stats.bytes
-    }
-    
-    var hosts: Set<String> {
-        return stats.hosts
-    }
-    
-    var visited: UInt64 {
-        return stats.count
     }
     
     var view: WKWebView {
@@ -85,46 +80,21 @@ class Fetcher : NSObject {
     }
     
     private func next(_  bytes: UInt64) {
-        self.stats.incBytes(by: bytes)
-        self.stats.incCount(by: 1)
-        self.stats.addUrl(url: self.urls[0])
-        let rand = arc4random_uniform(self.delay)
+        self.count += 1
+        self.last = bytes
+        self.bytes += bytes
+        let rand = arc4random_uniform(self.delay) + 1
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(rand), execute: {
             if(self.running) {
-                self.index += 1
-                self.loader.load(self.urls[self.index % self.urls.count], self.next)
+                self.go()
             }
         })
     }
+    
+    private func go() {
+        let index = Int(arc4random_uniform(UInt32(self.urls.count)))
+        self.loader.load(self.urls[index], self.next)
+    }
 }
 
-class Stats {
-    public private(set) var bytes: UInt64
-    public private(set) var count: UInt64
-    public private(set) var hosts: Set<String>
-    public private(set) var started: Date
-    
-    init() {
-        bytes = 0
-        count = 0
-        hosts = []
-        started = Date()
-    }
-    
-    func incBytes(by: UInt64) {
-        bytes += by
-    }
-    
-    func incCount(by: UInt64) {
-        count += by
-    }
-    
-    func addUrl(url: String) {
-        if let parsed = URL(string: url) {
-            if hosts.count > 5 { hosts.removeFirst() }
-            if let host = parsed.host {
-                hosts.insert(host)
-            }
-        }
-    }
-}
+

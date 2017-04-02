@@ -10,7 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NoiseViewController" customModule="Noise" customModuleProvider="target">
             <connections>
-                <outlet property="quit" destination="4fi-eK-jyx" id="TCk-Zz-khX"/>
+                <outlet property="label" destination="4fi-eK-jyx" id="756-Bj-ds5"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="webViewContainer" destination="pAQ-XH-IBL" id="pP6-4G-FJv"/>
             </connections>
@@ -37,7 +37,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="quit:" target="-2" id="G8S-VN-5Ih"/>
+                                    <action selector="quit:" target="-2" id="R5j-J7-9lJ"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4fi-eK-jyx">
