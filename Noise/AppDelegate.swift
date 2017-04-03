@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let path = Bundle.main.path(forResource: "sites", ofType: "txt")!
         let urls = try! String(contentsOfFile: path, encoding: String.Encoding.utf8)
-        self.noise = Fetcher(urls.components(separatedBy: "\n"), withDelay: 30)
+        self.noise = Fetcher(urls.components(separatedBy: "\n"), withDelay: 20)
         let controller = NoiseViewController(nibName: "NoiseViewController", bundle: nil)!
         controller.noise = noise
         popover.contentViewController = controller
