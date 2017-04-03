@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     let status = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     var noise: Fetcher!
+    var monitor: Any?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = status.button {
@@ -26,6 +27,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let controller = NoiseViewController(nibName: "NoiseViewController", bundle: nil)!
         controller.noise = noise
         popover.contentViewController = controller
+        monitor = NSEvent.addGlobalMonitorForEvents(matching: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [unowned self] event in
+            if self.popover.isShown {
+                self.popover.performClose(event)
+            }
+        }
         noise.run()
     }
     
@@ -40,6 +46,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
+        if monitor != nil {
+            NSEvent.removeMonitor(monitor!)
+        }
         noise.stop()
     }
 }
