@@ -5,7 +5,6 @@
 //  Created by Jeff Larson on 4/1/17.
 //  Copyright © 2017 Jeff Larson. All rights reserved.
 //
-import NoiseFetcher
 import Cocoa
 import WebKit
 
