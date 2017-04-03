@@ -11,13 +11,16 @@ import WebKit
 
 class Loader: NSObject, WKNavigationDelegate {
     private var done: (UInt64) -> ()
+    let width: CGFloat = 800
+    let height: CGFloat = 600
     var view: WKWebView
     override init() {
         let config = WKWebViewConfiguration()
+        
         if #available(macOS 10.11, iOS 9.0, *) {
             config.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         }
-        view = WKWebView(frame: CGRect(x: 0, y: 0, width: 460, height: 320), configuration: config)
+        view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
         self.done = {(it) in ()}
     }
     
@@ -35,6 +38,7 @@ class Loader: NSObject, WKNavigationDelegate {
         view.evaluateJavaScript("document.firstElementChild.outerHTML.length") { (maybe, error) in
             switch maybe {
             case let length as UInt64:
+                self.resize()
                 self.done(length)
             default:
                 self.done(0)
@@ -48,6 +52,14 @@ class Loader: NSObject, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.done(0)
+    }
+    
+    let fudge = 200
+    private func resize() {
+        var f = view.frame
+        f.size.width = width + CGFloat(Int(arc4random_uniform(UInt32(fudge))) - fudge / 2)
+        f.size.height = height + CGFloat(Int(arc4random_uniform(UInt32(fudge))) - fudge / 2)
+        view.frame = f
     }
 }
 
