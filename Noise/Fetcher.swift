@@ -97,7 +97,7 @@ class Fetcher : NSObject {
             self.last = bytes
             self.bytes += bytes
         }
-        let rand = arc4random_uniform(self.delay) + 1
+        let rand = arc4random_uniform(self.delay)
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(rand), execute: {
             if(self.running) {
                 self.go()
