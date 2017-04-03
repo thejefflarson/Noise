@@ -26,8 +26,7 @@ class NoiseTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             noise.stop()
             XCTAssert(noise.bytes > 0)
-            XCTAssert(noise.hosts.count > 0)
-            XCTAssert(noise.visited > 0)
+            XCTAssert(noise.count > 0)
             expect.fulfill()
         })
         self.waitForExpectations(timeout: 6.0, handler: nil)

@@ -9,7 +9,7 @@
 import Foundation
 import WebKit
 
-private class Loader: NSObject, WKNavigationDelegate {
+class Loader: NSObject, WKNavigationDelegate {
     private var done: (UInt64) -> ()
     var view: WKWebView
     override init() {
