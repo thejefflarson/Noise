@@ -16,10 +16,6 @@ class Loader: NSObject, WKNavigationDelegate {
     var view: WKWebView
     override init() {
         let config = WKWebViewConfiguration()
-        
-        if #available(macOS 10.11, iOS 9.0, *) {
-            config.websiteDataStore = WKWebsiteDataStore.nonPersistent()
-        }
         view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
         self.done = {(it) in ()}
     }
