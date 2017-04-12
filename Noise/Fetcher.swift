@@ -16,6 +16,11 @@ class Loader: NSObject, WKNavigationDelegate {
     var view: WKWebView
     override init() {
         let config = WKWebViewConfiguration()
+        config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.all
+        config.preferences.javaEnabled = false
+        config.preferences.javaScriptCanOpenWindowsAutomatically = false
+        config.preferences.plugInsEnabled = false
+        config.applicationNameForUserAgent = "Safari"
         view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
         self.done = {(it) in ()}
     }
