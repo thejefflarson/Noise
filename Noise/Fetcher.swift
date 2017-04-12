@@ -16,10 +16,11 @@ class Loader: NSObject, WKNavigationDelegate {
     var view: WKWebView
     override init() {
         let config = WKWebViewConfiguration()
-        
-        if #available(macOS 10.11, iOS 9.0, *) {
-            config.websiteDataStore = WKWebsiteDataStore.nonPersistent()
-        }
+        config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.all
+        config.preferences.javaEnabled = false
+        config.preferences.javaScriptCanOpenWindowsAutomatically = false
+        config.preferences.plugInsEnabled = false
+        config.applicationNameForUserAgent = "Version/10.1 Safari/603.1.30"
         view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
         self.done = {(it) in ()}
     }
@@ -34,7 +35,7 @@ class Loader: NSObject, WKNavigationDelegate {
         }
     }
     
-    func webView(_ view: WKWebView, didFinish navigation: WKNavigation) {
+    func webView(_ view: WKWebView, didFinish navigation: WKNavigation) {        
         view.evaluateJavaScript("document.firstElementChild.outerHTML.length") { (maybe, error) in
             switch maybe {
             case let length as UInt64:

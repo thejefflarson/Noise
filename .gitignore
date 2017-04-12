@@ -66,3 +66,6 @@ fastlane/screenshots
 fastlane/test_output
 
 .DS_Store
+Tools/BL/
+Tools/shallalist.tar.gz
+https-everywhere/
