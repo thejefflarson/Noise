@@ -1,10 +1,24 @@
 all: Resources/sites.txt
 
+Tools/shallalist.tar.gz:
+	curl http://www.shallalist.de/Downloads/shallalist.tar.gz > $@
+
+Tools/block.txt: Tools/shallalist.tar.gz
+	tar xzvf $^
+	cat Tools/BL/{downloads,drugs,hacking,gamble,porn,spyware,updatesites,urlshortener,violence,warez,weapons}/domains > $@
+
 Resources:
 	mkdir -p Resources
-Resources/sites.txt: Resources
-	git clone --depth 1 https://github.com/EFForg/https-everywhere.git
-	ruby Tools/parse-rules.rb > $@
-	rm -rf https-everywhere
 
-.PHONY: all
+https-everywhere:
+	git clone --depth 1 https://github.com/EFForg/https-everywhere.git
+
+Resources/sites.txt: Resources Tools/block.txt Tools/parse-rules.rb https-everywhere
+	ruby Tools/parse-rules.rb > $@
+
+clean:
+	rm -rf https-everywhere
+	rm Tools/shallalist.tar.gz
+	rm -rf Tools/BL
+
+.PHONY: all clean
