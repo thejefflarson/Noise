@@ -1,11 +1,11 @@
 all: Resources/sites.txt
 
-Tools/shallalist.tar.gz:
+shallalist.tar.gz:
 	curl http://www.shallalist.de/Downloads/shallalist.tar.gz > $@
 
-Tools/block.txt: Tools/shallalist.tar.gz
+Tools/block.txt: shallalist.tar.gz
 	tar xzvf $^
-	cat Tools/BL/{downloads,drugs,hacking,gamble,porn,spyware,updatesites,urlshortener,violence,warez,weapons}/domains > $@
+	cat BL/{downloads,drugs,hacking,gamble,porn,spyware,updatesites,urlshortener,violence,warez,weapons}/domains > $@
 
 Resources:
 	mkdir -p Resources
@@ -18,7 +18,7 @@ Resources/sites.txt: Resources Tools/block.txt Tools/parse-rules.rb https-everyw
 
 clean:
 	rm -rf https-everywhere
-	rm Tools/shallalist.tar.gz
-	rm -rf Tools/BL
+	rm shallalist.tar.gz
+	rm -rf BL
 
 .PHONY: all clean
