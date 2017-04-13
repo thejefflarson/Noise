@@ -1,7 +1,8 @@
+require 'csv'
+require 'public_suffix'
 require 'rexml/document'
 require 'rexml/xpath'
 require 'resolv'
-require 'public_suffix'
 
 set = Set.new
 
@@ -10,27 +11,14 @@ open("#{__dir__}/block.txt").each_line do |it|
 end
 
 rank = {}
-open("#{__dir__}/Quantcast-Top-Million.txt").each_line do |it|
-  next unless it =~ /^\d/
-  rank[it.split(/\s+/).last] = it.split(/\s+/).first.to_i
+CSV.foreach("#{__dir__}/majestic_million.csv", headers: true) do |row|
+  rank[row['Domain']] = row['RefSubNets'].to_i
 end
 
 domains = []
 
 # Holder for domain and rank, calculates an estimated traffic score
-class Domain
-  attr_accessor :host, :rank
-  def initialize(host, rank)
-    @host = host
-    @rank = rank
-  end
-
-  def traffic
-    prediction = Math.exp(20.0599465 + -0.7699931 * Math.log(rank.to_f))
-    prediction /= 2 if ["google.com", "youtube.com"].include? @host
-    prediction
-  end
-end
+Domain = Struct.new(:host, :traffic)
 
 done = Set.new
 Dir["#{__dir__}/../https-everywhere/rules/*.xml"].each do |rule|
@@ -41,14 +29,14 @@ Dir["#{__dir__}/../https-everywhere/rules/*.xml"].each do |rule|
     host = el.attributes['host']
     next if host =~ /[*]/
     main = PublicSuffix.domain(host)
-    if set.include? main
+    if set.include?(main) || set.include?(host)
       $stderr.puts "blocked #{host}"
       next
     end
 
-    if !rank[main].nil? && !done.include?(main)
-      domains << Domain.new(main, rank[main].to_i)
-      done << main
+    if !rank[host].nil? && !done.include?(host)
+      domains << Domain.new(host, rank[host].to_i)
+      done << host
     else
       $stderr.puts "skipping #{host}"
     end
@@ -59,8 +47,8 @@ total = domains.map(&:traffic).reduce(&:+).to_f
 $stderr.puts "traffic: #{total}, domains: #{domains.length}"
 
 # create a cdf
-cum = 0.to_f
+accum = 0.to_f
 domains.sort_by { |d| -d.traffic }.each do |d|
-  cum += d.traffic / total
-  $stdout.puts "#{cum}\t#{d.host}"
+  accum += d.traffic / total
+  $stdout.puts "#{accum}\t#{d.host}"
 end
