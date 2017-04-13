@@ -50,5 +50,5 @@ $stderr.puts "traffic: #{total}, domains: #{domains.length}"
 accum = 0.to_f
 domains.sort_by { |d| -d.traffic }.each do |d|
   accum += d.traffic / total
-  $stdout.puts "#{accum}\t#{d.host}"
+  $stdout.puts "#{accum}\thttps://#{d.host}/"
 end

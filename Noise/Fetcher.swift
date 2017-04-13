@@ -9,6 +9,17 @@
 import Foundation
 import WebKit
 
+struct FetcherHost {
+    var host: String
+    var cumsum: Double
+    init?(_ row: String) {
+        if row.isEmpty { return nil }
+        let bits = row.characters.split(separator: "\t")
+        host = String(bits[1])
+        cumsum = Double(String(bits[0]))!
+    }
+}
+
 class Loader: NSObject, WKNavigationDelegate {
     private var done: (UInt64) -> ()
     let width: CGFloat = 800
@@ -65,7 +76,7 @@ class Loader: NSObject, WKNavigationDelegate {
 }
 
 class Fetcher : NSObject {
-    private var urls: [String]
+    private var urls: [FetcherHost]
     private var loader: Loader
     private var running: Bool = false
     var delay: UInt32
@@ -74,7 +85,7 @@ class Fetcher : NSObject {
     dynamic var bytes: UInt64 = 0
     
     init(_ urls: [String], withDelay delay: UInt32) {
-        self.urls = urls
+        self.urls = urls.map { FetcherHost($0) }.flatMap { $0 }
         self.loader = Loader()
         self.delay = delay
     }
@@ -106,9 +117,12 @@ class Fetcher : NSObject {
         })
     }
     
+    private let maxSize = 1000000
     private func go() {
-        let index = Int(arc4random_uniform(UInt32(self.urls.count)))
-        self.loader.load(self.urls[index], self.next)
+        let prob = Double(arc4random_uniform(UInt32(maxSize))) / Double(maxSize)
+        var index = 0
+        while(self.urls[index].cumsum < prob && index < self.urls.count) { index += 1 }
+        self.loader.load(self.urls[index].host, self.next)
     }
 }
 

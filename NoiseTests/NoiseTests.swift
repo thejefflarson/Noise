@@ -20,7 +20,7 @@ class NoiseTests: XCTestCase {
     }
     
     func testNoise() {
-        let noise = Fetcher(["https://www.google.com", "https://www.apple.com"], withDelay: 1)
+        let noise = Fetcher(["0.5\thttps://www.google.com/", "1.0\thttps://www.apple.com/"], withDelay: 1)
         noise.run()
         let expect = self.expectation(description: "Waiting for requests.")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
