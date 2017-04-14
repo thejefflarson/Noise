@@ -75,19 +75,58 @@ class Loader: NSObject, WKNavigationDelegate {
     }
 }
 
+// GameKit's too silly for this purpose
+class Guassian {
+    private var mean: Double
+    private var deviation: Double
+    private var cached: Bool
+    private var value: Double
+    
+    init(mean: Double, deviation: Double) {
+        self.mean = mean
+        self.deviation = deviation
+        self.cached = false
+        self.value = 0
+    }
+    
+    var rand : Double {
+        if !cached {
+            var u, v, s: Double
+            repeat {
+                u = randRange()
+                v = randRange()
+                s = u*u + v*v
+            } while s == 0 || s >= 1
+            let root = sqrt(-2 * log(s) / s)
+            value = u * root
+            cached = true
+            return v * root * deviation + mean
+        } else {
+            cached = false
+            return value * deviation + mean
+        }
+    }
+    
+    private func randRange() -> Double {
+        return Double(arc4random()) / Double(UINT32_MAX) * 2 - 1
+    }
+}
+
 class Fetcher : NSObject {
     private var urls: [FetcherHost]
     private var loader: Loader
     private var running: Bool = false
-    var delay: UInt32
+    private var gauss: Guassian
+    var delay: Double
     var count: UInt64 = 0
     var last: UInt64 = 0
     dynamic var bytes: UInt64 = 0
     
-    init(_ urls: [String], withDelay delay: UInt32) {
+    init(_ urls: [String], withDelay delay: Double) {
         self.urls = urls.map { FetcherHost($0) }.flatMap { $0 }
         self.loader = Loader()
         self.delay = delay
+        self.gauss = Guassian(mean: delay, deviation: delay / 2)
     }
     
     func run() {
@@ -109,8 +148,8 @@ class Fetcher : NSObject {
             self.last = bytes
             self.bytes += bytes
         }
-        let rand = arc4random_uniform(self.delay)
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(rand), execute: {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + gauss.rand, execute: {
             if(self.running) {
                 self.go()
             }

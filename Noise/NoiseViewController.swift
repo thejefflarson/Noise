@@ -15,9 +15,9 @@ class NoiseViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addView()
         noise.addObserver(self, forKeyPath: #keyPath(Fetcher.bytes), options: .new, context: nil)
         update()
-        addView()
     }
     
     override func observeValue(forKeyPath keyPath: String?,
