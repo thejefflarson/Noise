@@ -119,6 +119,10 @@ class Fetcher : NSObject {
     
     private let maxSize = 1000000
     private func go() {
+        // WKWebView is very very leaky let's let 10 requests go by before we kill the subprocess.
+        if self.count % 10 == 0 {
+            self.loader = Loader()
+        }
         let prob = Double(arc4random_uniform(UInt32(maxSize))) / Double(maxSize)
         var index = 0
         while(self.urls[index].cumsum < prob && index < self.urls.count) { index += 1 }

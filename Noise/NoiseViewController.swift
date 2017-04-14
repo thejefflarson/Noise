@@ -16,12 +16,8 @@ class NoiseViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         noise.addObserver(self, forKeyPath: #keyPath(Fetcher.bytes), options: .new, context: nil)
-        webViewContainer.addSubview(noise.view)
         update()
-        noise.view.leadingAnchor.constraint(equalTo: webViewContainer.leadingAnchor).isActive = true
-        noise.view.trailingAnchor.constraint(equalTo: webViewContainer.trailingAnchor).isActive = true
-        noise.view.topAnchor.constraint(equalTo: webViewContainer.topAnchor).isActive = true
-        noise.view.bottomAnchor.constraint(equalTo: webViewContainer.bottomAnchor).isActive = true
+        addView()
     }
     
     override func observeValue(forKeyPath keyPath: String?,
@@ -35,7 +31,19 @@ class NoiseViewController: NSViewController {
         }
     }
     
+    private func addView() {
+        webViewContainer.addSubview(noise.view)
+        noise.view.leadingAnchor.constraint(equalTo: webViewContainer.leadingAnchor).isActive = true
+        noise.view.trailingAnchor.constraint(equalTo: webViewContainer.trailingAnchor).isActive = true
+        noise.view.topAnchor.constraint(equalTo: webViewContainer.topAnchor).isActive = true
+        noise.view.bottomAnchor.constraint(equalTo: webViewContainer.bottomAnchor).isActive = true
+    }
+    
     private func update() {
+        if webViewContainer.subviews[0] != noise.view {
+            webViewContainer.subviews[0].removeFromSuperview()
+            addView()
+        }
         let bytes = ByteCountFormatter.string(fromByteCount: Int64(noise.bytes), countStyle: ByteCountFormatter.CountStyle.file)
         let s = noise.count != 1 ? "s" : ""
         label.stringValue = "Loaded \(noise.count) site\(s): \(bytes)"
