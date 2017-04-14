@@ -79,18 +79,18 @@ class Loader: NSObject, WKNavigationDelegate {
 class Guassian {
     private var mean: Double
     private var deviation: Double
-    private var cached: Bool
-    private var value: Double
+    private var value: Double?
     
     init(mean: Double, deviation: Double) {
         self.mean = mean
         self.deviation = deviation
-        self.cached = false
-        self.value = 0
     }
     
     var rand : Double {
-        if !cached {
+        if let ret = value {
+            value = nil
+            return ret * deviation + mean
+        } else {
             var u, v, s: Double
             repeat {
                 u = randRange()
@@ -99,11 +99,7 @@ class Guassian {
             } while s == 0 || s >= 1
             let root = sqrt(-2 * log(s) / s)
             value = u * root
-            cached = true
             return v * root * deviation + mean
-        } else {
-            cached = false
-            return value * deviation + mean
         }
     }
     
