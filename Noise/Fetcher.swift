@@ -154,7 +154,7 @@ class Fetcher : NSObject {
     
     private let maxSize = 1000000
     private func go() {
-        // WKWebView is very very leaky let's let 10 requests go by before we kill the subprocess.
+        // WKWebView is very very leaky let's let 50 requests go by before we kill the subprocess.
         if self.count % 50 == 0 {
             self.loader = Loader()
         }
