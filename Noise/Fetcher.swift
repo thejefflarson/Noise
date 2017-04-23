@@ -66,6 +66,15 @@ class Loader: NSObject, WKNavigationDelegate {
         self.done(0)
     }
     
+    func webView(_ decidePolicyForwebView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
+        if let url = navigationAction.request.mainDocumentURL {
+            if(url.scheme == "https") {
+                decisionHandler(.allow)
+            }
+        }
+        decisionHandler(.cancel)
+    }
+    
     let fudge = 200
     private func resize() {
         var f = view.frame
