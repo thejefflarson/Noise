@@ -27,11 +27,12 @@ class Loader: NSObject, WKNavigationDelegate {
     var view: WKWebView
     override init() {
         let config = WKWebViewConfiguration()
-        config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.all
+        config.mediaTypesRequiringUserActionForPlayback = .all
         config.preferences.javaEnabled = false
         config.preferences.javaScriptCanOpenWindowsAutomatically = false
         config.preferences.plugInsEnabled = false
         config.applicationNameForUserAgent = "Version/10.1 Safari/603.1.30"
+        config.websiteDataStore = .nonPersistent()
         view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
         self.done = {(it) in ()}
     }
@@ -163,8 +164,8 @@ class Fetcher : NSObject {
     
     private let maxSize = 1000000
     private func go() {
-        // WKWebView is very very leaky let's let 50 requests go by before we kill the subprocess.
-        if self.count % 50 == 0 {
+        // WKWebView is very very leaky let's let 20 requests go by before we kill the subprocess.
+        if self.count % 20 == 0 {
             self.loader = Loader()
         }
         let prob = Double(arc4random_uniform(UInt32(maxSize))) / Double(maxSize)
