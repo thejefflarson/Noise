@@ -68,7 +68,7 @@ class Loader: NSObject, WKNavigationDelegate {
     
     func webView(_ decidePolicyForwebView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
         if let url = navigationAction.request.mainDocumentURL {
-            if(url.scheme == "https") {
+            if(url.scheme == "https" || url.scheme == "http") {
                 decisionHandler(.allow)
             }
         }
