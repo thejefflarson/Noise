@@ -69,3 +69,5 @@ fastlane/test_output
 Tools/BL/
 Tools/shallalist.tar.gz
 https-everywhere/
+BL/
+shallalist.*

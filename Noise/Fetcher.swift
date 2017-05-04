@@ -34,7 +34,8 @@ class Loader: NSObject, WKNavigationDelegate {
         config.applicationNameForUserAgent = "Version/10.1 Safari/603.1.30"
         config.websiteDataStore = .nonPersistent()
         view = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height), configuration: config)
-        self.done = {(it) in ()}
+        done = {(it) in ()}
+        super.init()
     }
     
     func load(_ url: String, _ callback: @escaping (UInt64) -> ()) {
@@ -69,8 +70,8 @@ class Loader: NSObject, WKNavigationDelegate {
     
     func webView(_ decidePolicyForwebView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
         if let url = navigationAction.request.mainDocumentURL {
-            if(url.scheme == "https") {
-                decisionHandler(.allow)
+            if(url.scheme == "https" || url.scheme == "http") {
+                return decisionHandler(.allow)
             }
         }
         decisionHandler(.cancel)

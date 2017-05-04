@@ -19,6 +19,10 @@
 		1FDE463A1E9098AF005C48A0 /* NoiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE46381E9098AF005C48A0 /* NoiseViewController.swift */; };
 		1FDE463B1E9098AF005C48A0 /* NoiseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE46391E9098AF005C48A0 /* NoiseViewController.xib */; };
 		1FDE463D1E909D3B005C48A0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE463C1E909D3B005C48A0 /* MainMenu.xib */; };
+		1FFB0DA61EAE83EE005539C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB0DA51EAE83EE005539C2 /* AppDelegate.swift */; };
+		1FFB0DA81EAE83EF005539C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB0DA71EAE83EF005539C2 /* ViewController.swift */; };
+		1FFB0DAA1EAE83EF005539C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB0DA91EAE83EF005539C2 /* Assets.xcassets */; };
+		1FFB0DAD1EAE83EF005539C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB0DAB1EAE83EF005539C2 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,12 @@
 		1FDE46381E9098AF005C48A0 /* NoiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoiseViewController.swift; sourceTree = "<group>"; };
 		1FDE46391E9098AF005C48A0 /* NoiseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoiseViewController.xib; sourceTree = "<group>"; };
 		1FDE463C1E909D3B005C48A0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		1FFB0DA31EAE83EE005539C2 /* NoiseHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoiseHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFB0DA51EAE83EE005539C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1FFB0DA71EAE83EF005539C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FFB0DA91EAE83EF005539C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1FFB0DAC1EAE83EF005539C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1FFB0DAE1EAE83F0005539C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1F474DED1E9081E7006C5BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FFB0DA01EAE83EE005539C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,6 +115,7 @@
 				1F474DD61E9081E7006C5BC2 /* Noise */,
 				1F474DE81E9081E7006C5BC2 /* NoiseTests */,
 				1F474DF31E9081E7006C5BC2 /* NoiseUITests */,
+				1FFB0DA41EAE83EE005539C2 /* NoiseHelper */,
 				1F474DD51E9081E7006C5BC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +126,7 @@
 				1F474DD41E9081E7006C5BC2 /* Noise.app */,
 				1F474DE51E9081E7006C5BC2 /* NoiseTests.xctest */,
 				1F474DF01E9081E7006C5BC2 /* NoiseUITests.xctest */,
+				1FFB0DA31EAE83EE005539C2 /* NoiseHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +161,18 @@
 				1F474DF61E9081E7006C5BC2 /* Info.plist */,
 			);
 			path = NoiseUITests;
+			sourceTree = "<group>";
+		};
+		1FFB0DA41EAE83EE005539C2 /* NoiseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				1FFB0DA51EAE83EE005539C2 /* AppDelegate.swift */,
+				1FFB0DA71EAE83EF005539C2 /* ViewController.swift */,
+				1FFB0DA91EAE83EF005539C2 /* Assets.xcassets */,
+				1FFB0DAB1EAE83EF005539C2 /* Main.storyboard */,
+				1FFB0DAE1EAE83F0005539C2 /* Info.plist */,
+			);
+			path = NoiseHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,13 +231,30 @@
 			productReference = 1F474DF01E9081E7006C5BC2 /* NoiseUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		1FFB0DA21EAE83EE005539C2 /* NoiseHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FFB0DB11EAE83F0005539C2 /* Build configuration list for PBXNativeTarget "NoiseHelper" */;
+			buildPhases = (
+				1FFB0D9F1EAE83EE005539C2 /* Sources */,
+				1FFB0DA01EAE83EE005539C2 /* Frameworks */,
+				1FFB0DA11EAE83EE005539C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoiseHelper;
+			productName = NoiseHelper;
+			productReference = 1FFB0DA31EAE83EE005539C2 /* NoiseHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1F474DCC1E9081E7006C5BC2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jeff Larson";
 				TargetAttributes = {
@@ -227,6 +275,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1F474DD31E9081E7006C5BC2;
 					};
+					1FFB0DA21EAE83EE005539C2 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 1F474DCF1E9081E7006C5BC2 /* Build configuration list for PBXProject "Noise" */;
@@ -245,6 +297,7 @@
 				1F474DD31E9081E7006C5BC2 /* Noise */,
 				1F474DE41E9081E7006C5BC2 /* NoiseTests */,
 				1F474DEF1E9081E7006C5BC2 /* NoiseUITests */,
+				1FFB0DA21EAE83EE005539C2 /* NoiseHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -273,6 +326,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FFB0DA11EAE83EE005539C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFB0DAA1EAE83EF005539C2 /* Assets.xcassets in Resources */,
+				1FFB0DAD1EAE83EF005539C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +369,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FFB0D9F1EAE83EE005539C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFB0DA81EAE83EF005539C2 /* ViewController.swift in Sources */,
+				1FFB0DA61EAE83EE005539C2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -321,6 +392,17 @@
 			targetProxy = 1F474DF11E9081E7006C5BC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1FFB0DAB1EAE83EF005539C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FFB0DAC1EAE83EF005539C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F474DF71E9081E7006C5BC2 /* Debug */ = {
@@ -505,6 +587,34 @@
 			};
 			name = Release;
 		};
+		1FFB0DAF1EAE83F0005539C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NoiseHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = thejefflarson.NoiseHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1FFB0DB01EAE83F0005539C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = NoiseHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = thejefflarson.NoiseHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -543,6 +653,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1FFB0DB11EAE83F0005539C2 /* Build configuration list for PBXNativeTarget "NoiseHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FFB0DAF1EAE83F0005539C2 /* Debug */,
+				1FFB0DB01EAE83F0005539C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
